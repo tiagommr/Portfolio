@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tiago Rêga | Software Developer</title>
+  <link rel="stylesheet" href="portfolio.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
+</head>
+<body>
+  <!-- Intro Page (Preloader) -->
+  <div id="intro">
+    <h1 id="typing"></h1>
+    <p id="subtitle">Software Developer</p>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <div id="main-content">
+    <!-- Navbar fixa -->
+    <header>
+      <nav class="navbar">
+        <h1 class="logo">Tiago Rêga</h1>
+        <ul class="nav-links">
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#competencias">Competências</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+
+        <!-- Dropdown de idiomas -->
+        <div class="lang-dropdown">
+          <button class="lang-btn">
+            <span class="fi fi-pt"></span> <span class="lang-code">PT</span>
+          </button>
+          <ul class="lang-menu">
+            <li data-lang="pt"><span class="fi fi-pt"></span> Português</li>
+            <li data-lang="en"><span class="fi fi-gb"></span> English</li>
+          </ul>
+        </div>
+
+        <!-- Menu mobile -->
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="hero-text">
+        <h2>Olá, eu sou <span>Tiago Rêga</span></h2>
+        <p>Estudante de Engenharia Informática & Desenvolvedor Full-Stack</p>
+        <a href="#projetos" class="btn">Ver Projetos</a>
+      </div>
+      <div class="hero-img">
+        <img src="assets/profile.jpg" alt="Foto Tiago" />
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre">
+      <h2>Sobre Mim</h2>
+      <p>Sou apaixonado por tecnologia, redes e desenvolvimento web. Trabalho com várias linguagens e frameworks e gosto de criar soluções práticas e funcionais.</p>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos">
+      <h2>Projetos</h2>
+      <div class="grid-projetos">
+        <div class="card">
+          <h3>Mundo em Rotas</h3>
+          <p>Plataforma em Laravel para gestão de atividades e reservas.</p>
+          <a href="https://github.com/teu-utilizador/mundo-em-rotas" target="_blank">Ver Projeto</a>
+        </div>
+        <div class="card">
+          <h3>CalculatorFX</h3>
+          <p>Aplicação em JavaFX com interface moderna.</p>
+          <a href="https://github.com/teu-utilizador/calculatorfx" target="_blank">Ver Projeto</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competências -->
+    <section id="competencias">
+      <h2>Competências</h2>
+      <div class="skills">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        <span>PHP</span><span>Laravel</span><span>Java</span>
+        <span>C</span><span>Redes Cisco</span><span>Git & GitHub</span>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Entra em contacto comigo através das minhas redes:</p>
+      <div class="socials">
+        <a href="https://github.com/teu-utilizador" target="_blank"><img src="assets/github.svg" alt="GitHub"></a>
+        <a href="https://linkedin.com/in/tiago" target="_blank"><img src="assets/linkedin.svg" alt="LinkedIn"></a>
+        <a href="mailto:tiago@email.com"><img src="assets/email.svg" alt="Email"></a>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Tiago Miguel. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script src="portfolio.js"></script>
+</body>
+</html>
