@@ -1,3 +1,5 @@
+// portfolio.js
+
 // Typing effect
 function typeWriter(el, text, speed = 120) {
   return new Promise((resolve) => {
@@ -76,7 +78,6 @@ langMenuItems.forEach(item => {
 
     langDropdown.classList.remove("active");
 
-    // Aqui podes ligar lógica de tradução dinâmica no futuro
     console.log("Idioma selecionado:", item.dataset.lang);
   });
 });
