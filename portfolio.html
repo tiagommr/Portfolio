@@ -50,7 +50,7 @@
         <div class="hero-text">
           <h2><span>Tiago Rêga</span></h2>
           <p>
-            Integer ultrices, sem posuere egestas tincidunt, magna ante mattis leo, vitae fermentum justo nisi at nunc. Aenean consequat lorem nulla, auctor feugiat erat dignissim ut. Praesent consequat euismod vestibulum.
+            Integer ultrices, sem posuere egestas tincidunt, magna ante mattis leo, vitae fermentum justo nisi at nunc. Aenean consequat lorem nulla, auctor feugiat erat dignissim ut.
           </p>
           <a href="#projetos" class="btn">Ver Projetos</a>
         </div>
@@ -74,15 +74,24 @@
     <section id="projetos">
       <h2>Projetos</h2>
       <div class="grid-projetos">
+        <!-- Projeto 1 -->
         <div class="card">
           <h3>Mundo em Rotas</h3>
           <p>Plataforma em Laravel para gestão de atividades e reservas.</p>
-          <a href="https://github.com/teu-utilizador/mundo-em-rotas" target="_blank">Ver Projeto</a>
+          <div class="card-buttons">
+            <button class="btn ver-projeto" data-projeto="1">Ver Projeto</button>
+            <a href="https://github.com/teu-utilizador/mundo-em-rotas" class="btn github" target="_blank">Ver no GitHub</a>
+          </div>
         </div>
+
+        <!-- Projeto 2 -->
         <div class="card">
           <h3>MaisTrust</h3>
-          <p>Aplicação Móvel para a empresa Trust</p>
-          <a href="https://github.com/teu-utilizador/calculatorfx" target="_blank">Ver Projeto</a>
+          <p>Aplicação Móvel para a empresa Trust.</p>
+          <div class="card-buttons">
+            <button class="btn ver-projeto" data-projeto="2">Ver Projeto</button>
+            <a href="https://github.com/teu-utilizador/maistrust" class="btn github" target="_blank">Ver no GitHub</a>
+          </div>
         </div>
       </div>
     </section>
@@ -110,6 +119,16 @@
     <footer>
       <p>&copy; 2025 Tiago Miguel. Todos os direitos reservados.</p>
     </footer>
+  </div>
+
+  <!-- POPUP MODAL -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-description"></p>
+      <div id="modal-images" class="modal-images"></div>
+    </div>
   </div>
 
   <script src="portfolio.js"></script>

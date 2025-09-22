@@ -86,3 +86,51 @@ langMenuItems.forEach(item => {
 document.addEventListener("click", () => {
   langDropdown.classList.remove("active");
 });
+
+// MODAL POPUP PROJETOS
+const projetos = {
+  1: {
+    title: "Mundo em Rotas",
+    description: "Plataforma em Laravel para gestão de atividades, reservas e autenticação de utilizadores.",
+    images: ["assets/mundo1.jpg", "assets/mundo2.jpg"]
+  },
+  2: {
+    title: "MaisTrust",
+    description: "Aplicação móvel desenvolvida para a empresa Trust, focada em otimizar a gestão e interação com clientes.",
+    images: ["assets/trust1.jpg", "assets/trust2.jpg"]
+  }
+};
+
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modal-title");
+const modalDesc = document.getElementById("modal-description");
+const modalImages = document.getElementById("modal-images");
+const closeBtn = document.querySelector(".close");
+
+document.querySelectorAll(".ver-projeto").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const id = btn.dataset.projeto;
+    const projeto = projetos[id];
+
+    modalTitle.textContent = projeto.title;
+    modalDesc.textContent = projeto.description;
+    modalImages.innerHTML = "";
+    projeto.images.forEach(img => {
+      const el = document.createElement("img");
+      el.src = img;
+      modalImages.appendChild(el);
+    });
+
+    modal.style.display = "flex";
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});

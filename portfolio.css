@@ -349,6 +349,110 @@ section h2 {
 }
 .card a:hover { background: #d69c2f; }
 
+/* Botões dentro dos cards */
+.card-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.card-buttons .btn {
+  flex: 1;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s;
+}
+
+.card-buttons .ver-projeto {
+  background: #e0a93d;
+  color: #0d1b2a;
+}
+.card-buttons .ver-projeto:hover {
+  background: #d69c2f;
+}
+
+.card-buttons .github {
+  background: transparent;
+  border: 1px solid #e0a93d;
+  color: #e0a93d;
+}
+.card-buttons .github:hover {
+  background: #e0a93d;
+  color: #0d1b2a;
+}
+
+/* MODAL POPUP */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 2000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  background: rgba(0,0,0,0.8);
+  justify-content: center; 
+  align-items: center;
+}
+
+.modal-content {
+  background: #0d1b2a;
+  border: 2px solid #e0a93d;
+  padding: 20px;
+  max-width: 700px;
+  width: 90%;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  color: #e0a93d;
+}
+
+.modal-content p {
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+.modal-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.modal-images img {
+  width: 150px;
+  border-radius: 6px;
+  border: 1px solid #e0a93d;
+  transition: transform 0.3s;
+}
+.modal-images img:hover {
+  transform: scale(1.05);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.8rem;
+  color: #e0a93d;
+  cursor: pointer;
+  font-weight: bold;
+}
+.close:hover {
+  color: #fff;
+}
+
 /* Competências */
 .skills {
   display: flex;
