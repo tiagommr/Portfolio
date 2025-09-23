@@ -510,30 +510,79 @@ section h2 {
 
 /* Competências */
 #competencias h3 {
-  margin: 25px 0 15px;
-  font-size: 1.3rem;
+  margin: 30px 0 20px;
+  font-size: 1.4rem;
+  font-weight: 600;
   color: #e0a93d;
+  text-align: left; /* alinhado ao título */
 }
+
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 20px;
+  justify-items: start;   /* em vez de center */
+  margin-top: 20px;
 }
+
+/* Ajuste específico para IDEs */
+#competencias .ides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 25px;              /* igual às outras secções */
+  justify-items: start;   /* encosta ao título */
+}
+
+/* Caixas das skills */
 .skill {
-  background: #0d1b2a;
-  border: 1px solid #e0a93d;
-  padding: 12px;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: bold;
-  color: #e0a93d;
-  transition: 0.3s;
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(145deg, #0f2236, #0b1929);
+  border: 1px solid rgba(224, 169, 61, 0.4);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+.skill img {
+  max-width: 65%;
+  max-height: 65%;
+  object-fit: contain;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+/* Efeito decorativo */
+.skill::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(224, 169, 61, 0.1);
+  transform: rotate(25deg);
+  z-index: 1;
+}
+
+/* Hover */
 .skill:hover {
-  background: #e0a93d;
-  color: #0d1b2a;
-  transform: translateY(-4px);
+  transform: translateY(-8px) scale(1.07);
+  border-color: #e0a93d;
+  box-shadow: 0 10px 20px rgba(224,169,61,0.25);
 }
+
+.skill:hover img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 6px rgba(224,169,61,0.7));
+}
+
+
 
 /* Contacto */
 #contacto p {
