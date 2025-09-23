@@ -16,11 +16,16 @@
 
   <!-- Conteúdo principal -->
   <div id="main-content">
-    <!-- Navbar fixa -->
+    <!-- Navbar -->
     <header>
       <nav class="navbar">
-        <h1 class="logo">Tiago Rêga</h1>
-        <ul class="nav-links">
+        <!-- Esquerda -->
+        <div class="nav-left">
+          <h1 class="logo">Tiago Rêga</h1>
+        </div>
+
+        <!-- Centro -->
+        <ul class="nav-center nav-links">
           <li><a href="#hero">Início</a></li>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#projetos">Projetos</a></li>
@@ -28,30 +33,34 @@
           <li><a href="#contacto">Contacto</a></li>
         </ul>
 
-        <!-- Dropdown de idiomas -->
-        <div class="lang-dropdown">
-          <button class="lang-btn">
-            <span class="fi fi-pt"></span> <span class="lang-code">PT</span>
-          </button>
-          <ul class="lang-menu">
-            <li data-lang="pt"><span class="fi fi-pt"></span> Português</li>
-            <li data-lang="en"><span class="fi fi-gb"></span> English</li>
-          </ul>
-        </div>
+        <!-- Direita -->
+        <div class="nav-right">
+          <!-- Idiomas -->
+          <div class="lang-dropdown">
+            <button class="lang-btn">
+              <span class="fi fi-pt"></span> <span class="lang-code">PT</span>
+            </button>
+            <ul class="lang-menu">
+              <li data-lang="pt"><span class="fi fi-pt"></span> Português</li>
+              <li data-lang="en"><span class="fi fi-gb"></span> English</li>
+            </ul>
+          </div>
 
-        <!-- Menu mobile -->
-        <div class="menu-toggle" id="menu-toggle">☰</div>
+          <!-- Tema -->
+          <button id="theme-toggle" class="theme-toggle">☀️</button>
+
+          <!-- Menu Mobile -->
+          <div class="menu-toggle" id="menu-toggle">☰</div>
+        </div>
       </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="hero">
       <div class="hero-content">
         <div class="hero-text">
           <h2><span>Tiago Rêga</span></h2>
-          <p>
-            Integer ultrices, sem posuere egestas tincidunt, magna ante mattis leo, vitae fermentum justo nisi at nunc. Aenean consequat lorem nulla, auctor feugiat erat dignissim ut.
-          </p>
+          <p>Integer ultrices, sem posuere egestas tincidunt, magna ante mattis leo, vitae fermentum justo nisi at nunc.</p>
           <a href="#projetos" class="btn">Ver Projetos</a>
         </div>
         <div class="hero-img">
@@ -65,9 +74,7 @@
     <!-- Sobre -->
     <section id="sobre">
       <h2>Sobre Mim</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis elit dictum, feugiat augue non, tempus risus. Pellentesque hendrerit eu nibh a tincidunt. Curabitur non felis quis quam scelerisque porta vitae non sem. Integer pulvinar sodales turpis eget consectetur. Curabitur dolor ligula, hendrerit a mattis nec, blandit vel enim. Ut vel posuere est. Nulla tincidunt odio eget enim congue, vel sodales lorem venenatis. Quisque nec sapien dui. Quisque viverra ipsum non tellus molestie commodo. Quisque quam enim, rhoncus eget diam ac, consequat porttitor tellus. Praesent magna quam, varius nec turpis eget, sagittis fermentum tellus. Suspendisse maximus, mi ac vestibulum tincidunt, sapien felis malesuada enim, eu venenatis enim quam ut massa.
-      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis elit dictum, feugiat augue non, tempus risus.</p>
     </section>
 
     <!-- Projetos -->
@@ -83,7 +90,6 @@
             <a href="https://github.com/teu-utilizador/mundo-em-rotas" class="btn github" target="_blank">Ver no GitHub</a>
           </div>
         </div>
-
         <!-- Projeto 2 -->
         <div class="card">
           <h3>MaisTrust</h3>
@@ -121,7 +127,7 @@
     </footer>
   </div>
 
-  <!-- POPUP MODAL -->
+  <!-- Modal -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>

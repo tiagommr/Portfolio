@@ -134,3 +134,24 @@ window.addEventListener("click", (e) => {
     modal.style.display = "none";
   }
 });
+
+// THEME TOGGLE
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
+
+// carregar preferência guardada
+if (localStorage.getItem("theme") === "light") {
+  body.classList.add("light");
+  themeToggle.textContent = "🌙";
+}
+
+themeToggle.addEventListener("click", () => {
+  body.classList.toggle("light");
+  if (body.classList.contains("light")) {
+    themeToggle.textContent = "🌙"; // ícone lua
+    localStorage.setItem("theme", "light");
+  } else {
+    themeToggle.textContent = "☀️"; // ícone sol
+    localStorage.setItem("theme", "dark");
+  }
+});
