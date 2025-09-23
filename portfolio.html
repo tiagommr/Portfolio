@@ -6,25 +6,26 @@
   <title>Tiago Rêga | Software Developer</title>
   <link rel="stylesheet" href="portfolio.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Favicon -->
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 <body>
-  <!-- Intro Page (Preloader) -->
+  <!-- Intro -->
   <div id="intro">
     <h1 id="typing"></h1>
     <p id="subtitle">Software Developer</p>
   </div>
 
-  <!-- Conteúdo principal -->
+  <!-- Conteúdo -->
   <div id="main-content">
     <!-- Navbar -->
     <header>
       <nav class="navbar">
-        <!-- Esquerda -->
         <div class="nav-left">
           <h1 class="logo">Tiago Rêga</h1>
         </div>
-
-        <!-- Centro -->
         <ul class="nav-center nav-links">
           <li><a href="#hero">Início</a></li>
           <li><a href="#sobre">Sobre</a></li>
@@ -32,10 +33,7 @@
           <li><a href="#competencias">Competências</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
-
-        <!-- Direita -->
         <div class="nav-right">
-          <!-- Idiomas -->
           <div class="lang-dropdown">
             <button class="lang-btn">
               <span class="fi fi-pt"></span> <span class="lang-code">PT</span>
@@ -45,11 +43,7 @@
               <li data-lang="en"><span class="fi fi-gb"></span> English</li>
             </ul>
           </div>
-
-          <!-- Tema -->
           <button id="theme-toggle" class="theme-toggle">☀️</button>
-
-          <!-- Menu Mobile -->
           <div class="menu-toggle" id="menu-toggle">☰</div>
         </div>
       </nav>
@@ -60,8 +54,12 @@
       <div class="hero-content">
         <div class="hero-text">
           <h2><span>Tiago Rêga</span></h2>
-          <p>Integer ultrices, sem posuere egestas tincidunt, magna ante mattis leo, vitae fermentum justo nisi at nunc.</p>
-          <a href="#projetos" class="btn">Ver Projetos</a>
+          <p>Sou um entusiasta de tecnologia e desenvolvimento de software, sempre focado em criar soluções criativas e eficazes.</p>
+          <!-- Botões em container -->
+          <div class="hero-buttons">
+            <a href="#projetos" class="btn">Ver Projetos</a>
+            <a href="assets/CV_TiagoRega.pdf" class="btn cv-btn" download>📄 Descarregar CV</a>
+          </div>
         </div>
         <div class="hero-img">
           <div class="profile-frame">
@@ -74,29 +72,59 @@
     <!-- Sobre -->
     <section id="sobre">
       <h2>Sobre Mim</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis elit dictum, feugiat augue non, tempus risus.</p>
+      <div class="sobre-container">
+        <!-- Experiência -->
+        <div class="sobre-left">
+          <div class="exp-card">
+              <span class="exp-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+              <h3>Licenciatura em Engenharia Informática</h3>
+              <p>Universidade Fernando Pessoa (UFP)</p>
+              <span>Setembro 2021 - Setembro 2025</span>
+          </div>
+          <div class="exp-card">
+            <span class="exp-icon"><i class="fa-solid fa-briefcase"></i></span>
+            <h3>Vendedor</h3>
+            <p>Worten</p>
+            <span>Setembro 2024 - Presente</span>
+          </div>
+          <div class="exp-card">
+            <span class="exp-icon"><i class="fa-solid fa-briefcase"></i></span>
+            <h3>Receção Hóspedes</h3>
+            <p>Alojamento Local</p>
+            <span>Fevereiro 2024 - Outubro 2024</span>
+          </div>
+        </div> <!-- fecha sobre-left -->
+
+        <!-- Texto -->
+        <div class="sobre-right">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis elit dictum, feugiat augue non, tempus risus. Pellentesque hendrerit eu nibh a tincidunt. Curabitur non felis quis quam scelerisque porta vitae non sem. Integer pulvinar sodales turpis eget consectetur. Curabitur dolor ligula, hendrerit a mattis nec, blandit vel enim. Ut vel posuere est. Nulla tincidunt odio eget enim congue, vel sodales lorem venenatis. Quisque nec sapien dui.
+          </p>
+          <p>
+            Aliquam feugiat consequat nisl a consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum orci eget libero scelerisque maximus condimentum vestibulum augue. Nam sit amet ornare lorem. Morbi vitae tincidunt quam, in suscipit quam. Nulla blandit porttitor ante. Duis lacus urna, tincidunt sit amet urna tincidunt, ornare rhoncus urna. Nunc dictum fermentum sem, et posuere quam maximus sit amet. Suspendisse mattis nisl a enim rutrum sodales. Fusce non ligula ornare, porttitor mi non, convallis metus. Phasellus dui nibh, varius a gravida sed, cursus scelerisque neque.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Projetos -->
     <section id="projetos">
       <h2>Projetos</h2>
       <div class="grid-projetos">
-        <!-- Projeto 1 -->
         <div class="card">
           <h3>Mundo em Rotas</h3>
           <p>Plataforma em Laravel para gestão de atividades e reservas.</p>
           <div class="card-buttons">
             <button class="btn ver-projeto" data-projeto="1">Ver Projeto</button>
-            <a href="https://github.com/teu-utilizador/mundo-em-rotas" class="btn github" target="_blank">Ver no GitHub</a>
+            <a href="https://github.com/teu-utilizador/mundo-em-rotas" class="btn github" target="_blank">GitHub</a>
           </div>
         </div>
-        <!-- Projeto 2 -->
         <div class="card">
           <h3>MaisTrust</h3>
           <p>Aplicação Móvel para a empresa Trust.</p>
           <div class="card-buttons">
             <button class="btn ver-projeto" data-projeto="2">Ver Projeto</button>
-            <a href="https://github.com/teu-utilizador/maistrust" class="btn github" target="_blank">Ver no GitHub</a>
+            <a href="https://github.com/teu-utilizador/maistrust" class="btn github" target="_blank">GitHub</a>
           </div>
         </div>
       </div>
@@ -105,23 +133,48 @@
     <!-- Competências -->
     <section id="competencias">
       <h2>Competências</h2>
-      <div class="skills">
-        <span>HTML</span><span>CSS</span><span>JavaScript</span>
-        <span>PHP</span><span>Laravel</span><span>Java</span>
-        <span>C</span><span>Redes Cisco</span><span>Git & GitHub</span>
+      <h3>Linguagens</h3>
+      <div class="skills-grid">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Java</div>
+        <div class="skill">C</div>
+        <div class="skill">PHP</div>
+        <div class="skill">SQL</div>
+        <div class="skill">Dart</div>
+      </div>
+      <h3>Ferramentas & Frameworks</h3>
+      <div class="skills-grid">
+        <div class="skill">Bootstrap</div>
+        <div class="skill">React</div>
+        <div class="skill">Laravel</div>
+        <div class="skill">Spring Boot</div>
+        <div class="skill">Flutter</div>
+        <div class="skill">Git</div>
+        <div class="skill">GitHub</div>
+      </div>
+      <h3>IDEs</h3>
+      <div class="skills-grid">
+        <div class="skill">VS Code</div>
+        <div class="skill">IntelliJ</div>
+        <div class="skill">Android Studio</div>
+        <div class="skill">CLion</div>
       </div>
     </section>
 
     <!-- Contacto -->
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>Entra em contacto comigo através das minhas redes:</p>
+      <p>Podes entrar em contacto comigo através das minhas redes ou por email:</p>
       <div class="socials">
+        <a href="mailto:tiagommrega@gmail.com"><i class="fa-solid fa-envelope"></i> tiagommrega@gmail.com</a>
         <a href="https://github.com/teu-utilizador" target="_blank"><img src="assets/github.svg" alt="GitHub"></a>
         <a href="https://linkedin.com/in/tiago" target="_blank"><img src="assets/linkedin.svg" alt="LinkedIn"></a>
       </div>
     </section>
 
+    <!-- Footer -->
     <footer>
       <p>&copy; 2025 Tiago Miguel. Todos os direitos reservados.</p>
     </footer>

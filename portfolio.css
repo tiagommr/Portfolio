@@ -250,7 +250,15 @@ body {
   color: #ccc;
   max-width: 500px;
 }
-.hero-text .btn {
+
+/* Botões Hero */
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.hero-buttons .btn {
   display: inline-block;
   padding: 12px 28px;
   background: #e0a93d;
@@ -262,10 +270,24 @@ body {
   transition: all 0.3s;
   box-shadow: 0 0 12px #e0a93d;
 }
-.hero-text .btn:hover {
+.hero-buttons .btn:hover {
   background: #d69c2f;
   transform: translateY(-3px);
 }
+.cv-btn {
+  background: transparent;
+  border: 2px solid #e0a93d;
+  color: #e0a93d;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 12px 28px;
+  transition: all 0.3s;
+}
+.cv-btn:hover {
+  background: #e0a93d;
+  color: #0d1b2a;
+}
+
 .hero-img {
   flex: 1;
   min-width: 250px;
@@ -291,6 +313,9 @@ body {
     flex-direction: column;
     text-align: center;
   }
+  .hero-buttons {
+    justify-content: center;
+  }
   .hero-text p {
     margin: 20px auto;
   }
@@ -309,6 +334,64 @@ section h2 {
   border-bottom: 2px solid #e0a93d;
   display: inline-block;
   padding-bottom: 5px;
+}
+
+/* Sobre Mim */
+.sobre-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  margin-top: 30px;
+  align-items: start;
+}
+.sobre-left {
+  flex: 1;
+  min-width: 260px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.exp-card {
+  position: relative;
+  padding: 20px 20px 20px 60px;
+  background: #0d1b2a;
+  border: 1px solid #e0a93d;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.exp-card h3 {
+  color: #e0a93d;
+  margin-bottom: 6px;
+}
+.exp-card p {
+  color: #ccc;
+  margin-bottom: 4px;
+}
+.exp-card span {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+.exp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(224,169,61,0.4);
+}
+.exp-icon {
+  position: absolute;
+  left: 20px;
+  top: 25px;
+  font-size: 1.6rem;
+  color: #e0a93d;
+}
+.sobre-right {
+  flex: 2;
+  min-width: 280px;
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.sobre-right p {
+  margin-bottom: 15px;
 }
 
 /* Projetos */
@@ -426,18 +509,30 @@ section h2 {
 }
 
 /* Competências */
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+#competencias h3 {
+  margin: 25px 0 15px;
+  font-size: 1.3rem;
+  color: #e0a93d;
 }
-.skills span {
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+}
+.skill {
+  background: #0d1b2a;
+  border: 1px solid #e0a93d;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  color: #e0a93d;
+  transition: 0.3s;
+}
+.skill:hover {
   background: #e0a93d;
   color: #0d1b2a;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: bold;
+  transform: translateY(-4px);
 }
 
 /* Contacto */
@@ -457,6 +552,23 @@ section h2 {
 .socials img:hover {
   transform: scale(1.2);
   filter: sepia(100%) hue-rotate(350deg) saturate(500%);
+}
+
+.socials a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e0a93d;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.socials a:hover {
+  color: #fff;
+  transform: scale(1.05);
+}
+.socials i {
+  font-size: 1.2rem;
 }
 
 /* Footer */
@@ -516,7 +628,15 @@ body.light .ver-projeto:hover {
   background: #e0a93d;
   color: #0d1b2a;
 }
-body.light .skills span {
+body.light #competencias h3 {
+  color: #0d1b2a;
+}
+body.light .skill {
+  background: #fff;
+  border: 1px solid #0d1b2a;
+  color: #0d1b2a;
+}
+body.light .skill:hover {
   background: #0d1b2a;
   color: #fff;
 }
@@ -557,14 +677,33 @@ body.light .hero-text h2 span {
 body.light .hero-text p {
   color: #333;
 }
-body.light .hero-text .btn {
+body.light .hero-buttons .btn {
   background: #0d1b2a;
   color: #fff;
 }
-body.light .hero-text .btn:hover {
+body.light .hero-buttons .btn:hover {
   background: #e0a93d;
   color: #0d1b2a;
 }
 body.light .profile-frame {
   background: #0d1b2a;
+}
+body.light .exp-card {
+  background: #fff;
+  border: 1px solid #0d1b2a;
+}
+body.light .exp-card h3 {
+  color: #0d1b2a;
+}
+body.light .exp-card p {
+  color: #333;
+}
+body.light .exp-card span {
+  color: #555;
+}
+body.light .exp-icon {
+  color: #0d1b2a;
+}
+body.light .sobre-right {
+  color: #333;
 }
