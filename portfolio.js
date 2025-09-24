@@ -89,20 +89,25 @@ document.addEventListener("click", () => {
 
 // MODAL POPUP PROJETOS
 const projetos = {
-  1: {
-    title: "Mundo em Rotas",
-    description: "Plataforma em Laravel para gestão de atividades, reservas e autenticação de utilizadores.",
-    images: ["assets/mundo1.jpg", "assets/mundo2.jpg"]
-  },
-  2: {
+    1: {
     title: "MaisTrust",
     description: "Aplicação móvel desenvolvida para a empresa Trust, focada em otimizar a gestão e interação com clientes.",
     images: ["assets/trust1.jpg", "assets/trust2.jpg"]
+  },
+  2: {
+    title: "Mundo em Rotas",
+    description: "Plataforma em Laravel para gestão de atividades, reservas e autenticação de utilizadores.",
+    images: ["assets/mundo1.jpg", "assets/mundo2.jpg"]
   },
   3: {
     title: "SchoolAir — Monitorização de Qualidade do Ar",
     description: "O projeto SchoolAir simula a monitorização da qualidade do ar em salas de aula através da leitura e processamento de dados de sensores (Temperatura, Humidade, PM2.5, PM10, CO2), armazenados em ficheiros .csv. O sistema utiliza programação concorrente em C (POSIX) para garantir desempenho e sincronização entre múltiplas threads.",
     images: ["assets/schoolair1.jpg", "assets/schoolair2.jpg"]
+  },
+  4: {
+    title: "Drive",
+    description: "Este projeto implementa um sistema de partilha de ficheiros distribuído com autenticação, estrutura de diretórios, propagação de alterações entre clientes, utilizando Java RMI e RabbitMQ.",
+    images: ["assets/drive1.jpg", "assets/drive2.jpg"]
   }
 };
 
