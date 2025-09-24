@@ -98,6 +98,11 @@ const projetos = {
     title: "MaisTrust",
     description: "Aplicação móvel desenvolvida para a empresa Trust, focada em otimizar a gestão e interação com clientes.",
     images: ["assets/trust1.jpg", "assets/trust2.jpg"]
+  },
+  3: {
+    title: "SchoolAir — Monitorização de Qualidade do Ar",
+    description: "O projeto SchoolAir simula a monitorização da qualidade do ar em salas de aula através da leitura e processamento de dados de sensores (Temperatura, Humidade, PM2.5, PM10, CO2), armazenados em ficheiros .csv. O sistema utiliza programação concorrente em C (POSIX) para garantir desempenho e sincronização entre múltiplas threads.",
+    images: ["assets/schoolair1.jpg", "assets/schoolair2.jpg"]
   }
 };
 
