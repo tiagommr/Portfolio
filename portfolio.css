@@ -277,7 +277,6 @@ body {
   padding: 0;
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 .profile-frame img {
   width: 260px;
@@ -671,6 +670,41 @@ body.light { background: #fff; color: #0d1b2a; }
 body.light .navbar { background: rgba(255,255,255,0.9); }
 body.light .navbar.scrolled { background: #fff; }
 body.light .logo { color: #0d1b2a; }
+/* Light mode ajustes dropdown idiomas */
+body.light .lang-btn {
+  color: #0d1b2a;
+}
+
+body.light .lang-menu {
+  background: #fff;
+  border: 1px solid #0d1b2a;
+}
+
+body.light .lang-menu li {
+  color: #0d1b2a;
+}
+
+body.light .lang-menu li:hover {
+  background: rgba(13, 27, 42, 0.1);
+}
+
+/* Ajustes menu mobile em light mode */
+body.light .nav-center {
+  background: #fff;          /* fundo branco */
+}
+
+body.light .nav-links li a {
+  color: #0d1b2a;            /* links em preto */
+}
+
+body.light .nav-links li a:hover {
+  color: #e0a93d;            /* hover dourado */
+}
+
+body.light .menu-toggle {
+  color: #0d1b2a;            /* ícone do menu em preto */
+}
+
 body.light .nav-links li a { color: #0d1b2a; }
 body.light .nav-links li a::after { background: #0d1b2a; }
 body.light section h2 { color: #0d1b2a; border-bottom: 2px solid #e0a93d; }
@@ -694,7 +728,10 @@ body.light .hero-text h2 span { color: #e0a93d; }
 body.light .hero-text p { color: #333; }
 body.light .hero-buttons .btn { background: #0d1b2a; color: #fff; }
 body.light .hero-buttons .btn:hover { background: #e0a93d; color: #0d1b2a; }
-body.light .profile-frame { background: #0d1b2a; }
+body.light .profile-frame {
+  background: none;
+  padding: 0;
+}
 body.light .exp-card { background: #fff; border: 1px solid #0d1b2a; }
 body.light .exp-card h3 { color: #0d1b2a; }
 body.light .exp-card p { color: #333; }
