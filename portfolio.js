@@ -1,5 +1,3 @@
-// portfolio.js
-
 // Typing effect
 function typeWriter(el, text, speed = 120) {
   return new Promise((resolve) => {
@@ -87,26 +85,39 @@ document.addEventListener("click", () => {
   langDropdown.classList.remove("active");
 });
 
-// MODAL POPUP PROJETOS
+// ===================
+// MODAL + CARROSSEL
+// ===================
+
 const projetos = {
-    1: {
+  1: {
     title: "MaisTrust",
     description: "Aplicação móvel desenvolvida para a empresa Trust, focada em otimizar a gestão e interação com clientes.",
-    images: ["assets/trust1.jpg", "assets/trust2.jpg"]
+    images: ["assets/MaisTrust/imagem1.jpg", "assets/MaisTrust/imagem2.jpg", "assets/MaisTrust/imagem3.jpg", "assets/MaisTrust/imagem4.jpg",
+              "assets/MaisTrust/imagem5.jpg", "assets/MaisTrust/imagem6.jpg", "assets/MaisTrust/imagem7.jpg", "assets/MaisTrust/imagem8.jpg",
+              "assets/MaisTrust/imagem9.jpg", "assets/MaisTrust/imagem10.jpg", "assets/MaisTrust/imagem11.jpg", "assets/MaisTrust/imagem12.jpg",
+              "assets/MaisTrust/imagem13.jpg", "assets/MaisTrust/imagem14.jpg", "assets/MaisTrust/imagem15.jpg", "assets/MaisTrust/imagem16.jpg",
+              "assets/MaisTrust/imagem17.jpg", "assets/MaisTrust/imagem18.jpg", "assets/MaisTrust/imagem19.jpg", "assets/MaisTrust/imagem20.jpg",
+              "assets/MaisTrust/imagem21.jpg", "assets/MaisTrust/imagem22.jpg", "assets/MaisTrust/imagem23.jpg", "assets/MaisTrust/imagem24.jpg",
+              "assets/MaisTrust/imagem25.jpg", "assets/MaisTrust/imagem26.jpg", "assets/MaisTrust/imagem27.jpg", "assets/MaisTrust/imagem28.jpg",
+              "assets/MaisTrust/imagem29.jpg", "assets/MaisTrust/imagem30.jpg", "assets/MaisTrust/imagem31.jpg", "assets/MaisTrust/imagem32.jpg",
+              "assets/MaisTrust/imagem33.jpg", "assets/MaisTrust/imagem34.jpg"]
   },
   2: {
     title: "Mundo em Rotas",
     description: "Plataforma em Laravel para gestão de atividades, reservas e autenticação de utilizadores.",
-    images: ["assets/mundo1.jpg", "assets/mundo2.jpg"]
+    images: [
+      { type: "video", src: "https://www.youtube.com/embed/1We2TKoN78w"}
+    ]
   },
   3: {
-    title: "SchoolAir — Monitorização de Qualidade do Ar",
-    description: "O projeto SchoolAir simula a monitorização da qualidade do ar em salas de aula através da leitura e processamento de dados de sensores (Temperatura, Humidade, PM2.5, PM10, CO2), armazenados em ficheiros .csv. O sistema utiliza programação concorrente em C (POSIX) para garantir desempenho e sincronização entre múltiplas threads.",
+    title: "SchoolAir",
+    description: "O projeto SchoolAir simula a monitorização da qualidade do ar em salas de aula através de sensores e programação concorrente em C.",
     images: ["assets/schoolair1.jpg", "assets/schoolair2.jpg"]
   },
   4: {
     title: "Drive",
-    description: "Este projeto implementa um sistema de partilha de ficheiros distribuído com autenticação, estrutura de diretórios, propagação de alterações entre clientes, utilizando Java RMI e RabbitMQ.",
+    description: "Sistema de partilha de ficheiros distribuído com autenticação, diretórios e sincronização entre clientes.",
     images: ["assets/drive1.jpg", "assets/drive2.jpg"]
   }
 };
@@ -114,9 +125,69 @@ const projetos = {
 const modal = document.getElementById("modal");
 const modalTitle = document.getElementById("modal-title");
 const modalDesc = document.getElementById("modal-description");
-const modalImages = document.getElementById("modal-images");
+const carouselImage = document.getElementById("carousel-image");
+const carouselCaption = document.getElementById("carousel-caption");
+const carouselDots = document.getElementById("carousel-dots");
 const closeBtn = document.querySelector(".close");
 
+let currentImages = [];
+let currentIndex = 0;
+
+// Atualizar imagem + legenda + dots
+function updateCarousel() {
+  carouselImage.style.opacity = 0;
+  carouselImage.style.transform = "translateX(30px)";
+
+  setTimeout(() => {
+    const currentItem = currentImages[currentIndex];
+
+    // Se for vídeo
+    if (currentItem.type === "video") {
+      carouselImage.style.display = "none";
+      if (!document.getElementById("carousel-video")) {
+        const video = document.createElement("iframe");
+        video.id = "carousel-video";
+        video.width = "100%";
+        video.height = "500";
+        video.src = currentItem.src;
+        video.title = "YouTube video player";
+        video.frameBorder = "0";
+        video.allow =
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        video.allowFullscreen = true;
+        document.querySelector(".carousel-image-wrapper").prepend(video);
+      } else {
+        document.getElementById("carousel-video").src = currentItem.src;
+      }
+      carouselCaption.textContent = currentItem.caption || "";
+    } 
+    // Se for imagem
+    else {
+      const videoEl = document.getElementById("carousel-video");
+      if (videoEl) videoEl.remove();
+      carouselImage.style.display = "block";
+      carouselImage.src = currentItem.src;
+      carouselCaption.textContent = currentItem.caption || "";
+    }
+
+    carouselImage.style.opacity = 1;
+    carouselImage.style.transform = "translateX(0)";
+  }, 250);
+
+  // Atualiza os dots
+  carouselDots.innerHTML = "";
+  currentImages.forEach((_, i) => {
+    const dot = document.createElement("span");
+    if (i === currentIndex) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+      currentIndex = i;
+      updateCarousel();
+    });
+    carouselDots.appendChild(dot);
+  });
+}
+
+// abrir modal
 document.querySelectorAll(".ver-projeto").forEach(btn => {
   btn.addEventListener("click", () => {
     const id = btn.dataset.projeto;
@@ -124,28 +195,49 @@ document.querySelectorAll(".ver-projeto").forEach(btn => {
 
     modalTitle.textContent = projeto.title;
     modalDesc.textContent = projeto.description;
-    modalImages.innerHTML = "";
-    projeto.images.forEach(img => {
-      const el = document.createElement("img");
-      el.src = img;
-      modalImages.appendChild(el);
-    });
 
+    currentImages = projeto.images.map(item =>
+      typeof item === "string" ? { type: "image", src: item, caption: "" } : item
+    );
+    currentIndex = 0;
+
+    updateCarousel();
     modal.style.display = "flex";
   });
 });
 
-closeBtn.addEventListener("click", () => {
-  modal.style.display = "none";
+// fechar modal
+closeBtn.addEventListener("click", closeModal);
+window.addEventListener("click", (e) => {
+  if (e.target === modal) closeModal();
 });
 
-window.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    modal.style.display = "none";
+function closeModal() {
+  modal.style.display = "none";
+}
+
+// navegação
+document.querySelector(".carousel-btn.prev").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  updateCarousel();
+});
+document.querySelector(".carousel-btn.next").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  updateCarousel();
+});
+
+// suporte a teclado
+document.addEventListener("keydown", (e) => {
+  if (modal.style.display === "flex") {
+    if (e.key === "ArrowLeft") document.querySelector(".carousel-btn.prev").click();
+    if (e.key === "ArrowRight") document.querySelector(".carousel-btn.next").click();
+    if (e.key === "Escape") closeModal();
   }
 });
 
+// ===================
 // THEME TOGGLE
+// ===================
 const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
 
