@@ -7,6 +7,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;  /* evita scroll lateral */
+  max-width: 100%;
+}
+
 body {
   font-family: 'Poppins', Arial, sans-serif;
   line-height: 1.6;
@@ -188,12 +193,12 @@ body {
     right: -100%;
     flex-direction: column;
     background: #0d1b2a;
-    width: 220px;
+    width: 100%;     /* ocupa a largura total */
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 0;
     transition: right 0.3s ease;
   }
-  .nav-center.show { right: 20px; }
+  .nav-center.show { right: 0; }  /* entra sem criar scroll lateral */
   .menu-toggle {
     display: block;
     font-size: 1.8rem;
@@ -306,7 +311,6 @@ section h2 {
   display: inline-block;
   padding-bottom: 5px;
 }
-
 /* ==========================
    SOBRE
 ========================== */
@@ -349,6 +353,19 @@ section h2 {
   line-height: 1.6;
 }
 .sobre-right p { margin-bottom: 15px; }
+
+/* Responsividade: inverter ordem no mobile */
+@media (max-width: 768px) {
+  .sobre-container {
+    grid-template-columns: 1fr; /* passa para 1 coluna */
+  }
+  .sobre-left {
+    order: 1;  /* caixas primeiro */
+  }
+  .sobre-right {
+    order: 2;  /* texto depois */
+  }
+}
 
 /* ==========================
    PROJETOS
@@ -402,7 +419,7 @@ section h2 {
 }
 
 /* ==========================
-   MODAL + CARROSSEL (melhorado)
+   MODAL + CARROSSEL (corrigido e responsivo)
 ========================== */
 .modal {
   display: none;
@@ -422,15 +439,16 @@ section h2 {
   opacity: 1;
   transform: scale(1);
 }
+
 .modal-content {
   background: #0d1b2a;
   border-radius: 14px;
   padding: 20px;
   color: #fff;
-  width: 80%;           /* ocupa 80% do ecrã */
-  max-width: 1000px;    /* limite máximo no desktop */
-  max-height: 95vh;     /* nunca ultrapassa 85% da altura */
-  overflow-y: auto;     /* scroll se o conteúdo for maior */
+  width: 80%;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
   text-align: center;
   position: relative;
   animation: slideUp 0.4s ease;
@@ -439,10 +457,13 @@ section h2 {
   from { transform: translateY(40px); opacity: 0; }
   to   { transform: translateY(0); opacity: 1; }
 }
+
 .modal-content h2 { margin-bottom: 10px; color: #e0a93d; }
 .modal-content p { margin-bottom: 15px; color: #ccc; }
+
+/* Botão fechar */
 .close {
-  position: fixed;          /* fixa no ecrã, não dentro do modal */
+  position: fixed;
   top: 25px;
   right: 25px;
   font-size: 2.2rem;
@@ -455,13 +476,15 @@ section h2 {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  z-index: 3001;            /* acima do modal */
+  z-index: 3001;
   transition: all 0.3s ease;
 }
 .close:hover {
   background: #e0a93d;
   color: #0d1b2a;
 }
+
+/* Carrossel */
 .modal-carousel {
   display: flex;
   align-items: center;
@@ -470,19 +493,21 @@ section h2 {
   position: relative;
 }
 .carousel-image-wrapper {
-  width: 100%;                 /* ocupar toda a largura do modal */
-  display: flex;               /* usar flex para centralizar */
-  flex-direction: column;      /* imagem + legenda em coluna */
-  align-items: center;         /* centralizar horizontalmente */
-  justify-content: center;     /* centralizar verticalmente */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
 .modal-carousel img,
 #carousel-video {
   display: block;
-  margin: 0 auto;              /* garante que fica ao centro */
-  max-width: 90%;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   max-height: 65vh;
   border-radius: 12px;
   object-fit: contain;
@@ -494,6 +519,7 @@ section h2 {
   color: #ddd;
   font-style: italic;
 }
+
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -513,8 +539,9 @@ section h2 {
   color: #0d1b2a;
   transform: translateY(-50%) scale(1.15);
 }
-.carousel-btn.prev { left: 20px; }
-.carousel-btn.next { right: 20px; }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
 .carousel-dots {
   margin-top: 20px;
   display: flex;
@@ -533,6 +560,35 @@ section h2 {
   background: #e0a93d;
   transform: scale(1.3);
   box-shadow: 0 0 8px rgba(224,169,61,0.7);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    max-width: 95%;
+    max-height: 85vh;
+    padding: 15px;
+  }
+  .modal-carousel img,
+  #carousel-video {
+    width: 100%;
+    max-width: 100%;
+    max-height: 50vh;
+  }
+  .carousel-btn {
+    font-size: 1.6rem;
+    padding: 8px;
+  }
+  .carousel-btn.prev { left: 5px; }
+  .carousel-btn.next { right: 5px; }
+  .close {
+    top: 15px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    font-size: 1.8rem;
+  }
 }
 
 /* ==========================
