@@ -1,4 +1,6 @@
-// Typing effect
+// ===================
+// TYPING EFFECT INTRO
+// ===================
 function typeWriter(el, text, speed = 120) {
   return new Promise((resolve) => {
     let i = 0;
@@ -36,7 +38,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }, 1200);
 });
 
-// Navbar scroll effect
+// ===================
+// NAVBAR SCROLL EFFECT
+// ===================
 window.addEventListener("scroll", () => {
   const navbar = document.querySelector(".navbar");
   if (window.scrollY > 50) {
@@ -46,14 +50,18 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Toggle menu mobile
+// ===================
+// MENU MOBILE
+// ===================
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 menuToggle.addEventListener("click", () => {
   navLinks.classList.toggle("show");
 });
 
-// Dropdown de idiomas
+// ===================
+// DROPDOWN DE IDIOMAS
+// ===================
 const langDropdown = document.querySelector(".lang-dropdown");
 const langBtn = document.querySelector(".lang-btn");
 const langCode = document.querySelector(".lang-code");
@@ -64,13 +72,11 @@ langBtn.addEventListener("click", (e) => {
   langDropdown.classList.toggle("active");
 });
 
-// Mudar bandeira e código ao selecionar idioma
 langMenuItems.forEach(item => {
   item.addEventListener("click", () => {
     const selectedFlag = item.querySelector(".fi").className;
     const selectedLang = item.dataset.lang.toUpperCase();
 
-    // Atualiza o botão
     langBtn.querySelector(".fi").className = selectedFlag;
     langCode.textContent = selectedLang;
 
@@ -80,7 +86,6 @@ langMenuItems.forEach(item => {
   });
 });
 
-// Fecha dropdown se clicar fora
 document.addEventListener("click", () => {
   langDropdown.classList.remove("active");
 });
@@ -88,26 +93,17 @@ document.addEventListener("click", () => {
 // ===================
 // MODAL + CARROSSEL
 // ===================
-
 const projetos = {
   1: {
     title: "MaisTrust",
     description: "Aplicação móvel desenvolvida para a empresa Trust, focada em otimizar a gestão e interação com clientes.",
-    images: ["assets/MaisTrust/imagem1.jpg", "assets/MaisTrust/imagem2.jpg", "assets/MaisTrust/imagem3.jpg", "assets/MaisTrust/imagem4.jpg",
-              "assets/MaisTrust/imagem5.jpg", "assets/MaisTrust/imagem6.jpg", "assets/MaisTrust/imagem7.jpg", "assets/MaisTrust/imagem8.jpg",
-              "assets/MaisTrust/imagem9.jpg", "assets/MaisTrust/imagem10.jpg", "assets/MaisTrust/imagem11.jpg", "assets/MaisTrust/imagem12.jpg",
-              "assets/MaisTrust/imagem13.jpg", "assets/MaisTrust/imagem14.jpg", "assets/MaisTrust/imagem15.jpg", "assets/MaisTrust/imagem16.jpg",
-              "assets/MaisTrust/imagem17.jpg", "assets/MaisTrust/imagem18.jpg", "assets/MaisTrust/imagem19.jpg", "assets/MaisTrust/imagem20.jpg",
-              "assets/MaisTrust/imagem21.jpg", "assets/MaisTrust/imagem22.jpg", "assets/MaisTrust/imagem23.jpg", "assets/MaisTrust/imagem24.jpg",
-              "assets/MaisTrust/imagem25.jpg", "assets/MaisTrust/imagem26.jpg", "assets/MaisTrust/imagem27.jpg", "assets/MaisTrust/imagem28.jpg",
-              "assets/MaisTrust/imagem29.jpg", "assets/MaisTrust/imagem30.jpg", "assets/MaisTrust/imagem31.jpg", "assets/MaisTrust/imagem32.jpg",
-              "assets/MaisTrust/imagem33.jpg", "assets/MaisTrust/imagem34.jpg"]
+    images: Array.from({ length: 34 }, (_, i) => `assets/MaisTrust/imagem${i+1}.jpg`)
   },
   2: {
     title: "Mundo em Rotas",
     description: "Plataforma em Laravel para gestão de atividades, reservas e autenticação de utilizadores.",
     images: [
-      { type: "video", src: "https://www.youtube.com/embed/1We2TKoN78w"}
+      { type: "video", src: "https://www.youtube.com/embed/1We2TKoN78w" }
     ]
   },
   3: {
@@ -133,7 +129,6 @@ const closeBtn = document.querySelector(".close");
 let currentImages = [];
 let currentIndex = 0;
 
-// Atualizar imagem + legenda + dots
 function updateCarousel() {
   carouselImage.style.opacity = 0;
   carouselImage.style.transform = "translateX(30px)";
@@ -141,7 +136,6 @@ function updateCarousel() {
   setTimeout(() => {
     const currentItem = currentImages[currentIndex];
 
-    // Se for vídeo
     if (currentItem.type === "video") {
       carouselImage.style.display = "none";
       if (!document.getElementById("carousel-video")) {
@@ -160,9 +154,7 @@ function updateCarousel() {
         document.getElementById("carousel-video").src = currentItem.src;
       }
       carouselCaption.textContent = currentItem.caption || "";
-    } 
-    // Se for imagem
-    else {
+    } else {
       const videoEl = document.getElementById("carousel-video");
       if (videoEl) videoEl.remove();
       carouselImage.style.display = "block";
@@ -174,7 +166,6 @@ function updateCarousel() {
     carouselImage.style.transform = "translateX(0)";
   }, 250);
 
-  // Atualiza os dots
   carouselDots.innerHTML = "";
   currentImages.forEach((_, i) => {
     const dot = document.createElement("span");
@@ -187,7 +178,7 @@ function updateCarousel() {
   });
 }
 
-// abrir modal
+// Abrir modal
 document.querySelectorAll(".ver-projeto").forEach(btn => {
   btn.addEventListener("click", () => {
     const id = btn.dataset.projeto;
@@ -201,22 +192,24 @@ document.querySelectorAll(".ver-projeto").forEach(btn => {
     );
     currentIndex = 0;
 
-    updateCarousel();
     modal.style.display = "flex";
+    setTimeout(() => modal.classList.add("show"), 10);
+
+    updateCarousel();
   });
 });
 
-// fechar modal
+// Fechar modal
+function closeModal() {
+  modal.classList.remove("show");
+  setTimeout(() => { modal.style.display = "none"; }, 400);
+}
 closeBtn.addEventListener("click", closeModal);
 window.addEventListener("click", (e) => {
   if (e.target === modal) closeModal();
 });
 
-function closeModal() {
-  modal.style.display = "none";
-}
-
-// navegação
+// Navegação
 document.querySelector(".carousel-btn.prev").addEventListener("click", () => {
   currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
   updateCarousel();
@@ -226,7 +219,7 @@ document.querySelector(".carousel-btn.next").addEventListener("click", () => {
   updateCarousel();
 });
 
-// suporte a teclado
+// Teclado
 document.addEventListener("keydown", (e) => {
   if (modal.style.display === "flex") {
     if (e.key === "ArrowLeft") document.querySelector(".carousel-btn.prev").click();
@@ -235,13 +228,23 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// Swipe mobile
+let startX = 0;
+carouselImage.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+carouselImage.addEventListener("touchend", (e) => {
+  let endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) document.querySelector(".carousel-btn.next").click();
+  if (endX - startX > 50) document.querySelector(".carousel-btn.prev").click();
+});
+
 // ===================
 // THEME TOGGLE
 // ===================
 const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
 
-// carregar preferência guardada
 if (localStorage.getItem("theme") === "light") {
   body.classList.add("light");
   themeToggle.textContent = "🌙";
@@ -250,10 +253,10 @@ if (localStorage.getItem("theme") === "light") {
 themeToggle.addEventListener("click", () => {
   body.classList.toggle("light");
   if (body.classList.contains("light")) {
-    themeToggle.textContent = "🌙"; // ícone lua
+    themeToggle.textContent = "🌙";
     localStorage.setItem("theme", "light");
   } else {
-    themeToggle.textContent = "☀️"; // ícone sol
+    themeToggle.textContent = "☀️";
     localStorage.setItem("theme", "dark");
   }
 });

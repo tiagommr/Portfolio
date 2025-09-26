@@ -402,41 +402,66 @@ section h2 {
 }
 
 /* ==========================
-   MODAL + CARROSSEL
+   MODAL + CARROSSEL (melhorado)
 ========================== */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.modal.show {
+  display: flex;
+  opacity: 1;
+  transform: scale(1);
 }
 .modal-content {
   background: #0d1b2a;
-  border: 2px solid #e0a93d;
-  padding: 30px;
-  border-radius: 10px;
+  border-radius: 14px;
+  padding: 20px;
   color: #fff;
-  max-width: 90%;
-  width: 90%;
+  width: 80%;           /* ocupa 80% do ecrã */
+  max-width: 1000px;    /* limite máximo no desktop */
+  max-height: 95vh;     /* nunca ultrapassa 85% da altura */
+  overflow-y: auto;     /* scroll se o conteúdo for maior */
   text-align: center;
   position: relative;
+  animation: slideUp 0.4s ease;
+}
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
 }
 .modal-content h2 { margin-bottom: 10px; color: #e0a93d; }
 .modal-content p { margin-bottom: 15px; color: #ccc; }
 .close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.8rem;
-  color: #e0a93d;
+  position: fixed;          /* fixa no ecrã, não dentro do modal */
+  top: 25px;
+  right: 25px;
+  font-size: 2.2rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  font-weight: bold;
+  z-index: 3001;            /* acima do modal */
+  transition: all 0.3s ease;
 }
-.close:hover { color: #fff; }
-
+.close:hover {
+  background: #e0a93d;
+  color: #0d1b2a;
+}
 .modal-carousel {
   display: flex;
   align-items: center;
@@ -445,17 +470,24 @@ section h2 {
   position: relative;
 }
 .carousel-image-wrapper {
-  width: 85%;
+  width: 100%;                 /* ocupar toda a largura do modal */
+  display: flex;               /* usar flex para centralizar */
+  flex-direction: column;      /* imagem + legenda em coluna */
+  align-items: center;         /* centralizar horizontalmente */
+  justify-content: center;     /* centralizar verticalmente */
   text-align: center;
 }
-.modal-carousel img {
-  width: 100%;
-  max-height: 75vh;
+
+.modal-carousel img,
+#carousel-video {
+  display: block;
+  margin: 0 auto;              /* garante que fica ao centro */
+  max-width: 90%;
+  max-height: 65vh;
+  border-radius: 12px;
   object-fit: contain;
-  border-radius: 14px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-  transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
 .carousel-caption {
   margin-top: 12px;
   font-size: 1rem;
@@ -466,11 +498,11 @@ section h2 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(13, 27, 42, 0.5);
+  background: rgba(0,0,0,0.5);
   color: #e0a93d;
   border: none;
-  font-size: 3rem;
-  padding: 12px 20px;
+  font-size: 2rem;
+  padding: 12px;
   cursor: pointer;
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -481,8 +513,8 @@ section h2 {
   color: #0d1b2a;
   transform: translateY(-50%) scale(1.15);
 }
-.carousel-btn.prev { left: 30px; }
-.carousel-btn.next { right: 30px; }
+.carousel-btn.prev { left: 20px; }
+.carousel-btn.next { right: 20px; }
 .carousel-dots {
   margin-top: 20px;
   display: flex;
@@ -568,6 +600,7 @@ section h2 {
    CONTACTO
 ========================== */
 #contacto p { color: #ccc; }
+
 .socials {
   display: flex;
   gap: 20px;
@@ -670,68 +703,35 @@ body.light { background: #fff; color: #0d1b2a; }
 body.light .navbar { background: rgba(255,255,255,0.9); }
 body.light .navbar.scrolled { background: #fff; }
 body.light .logo { color: #0d1b2a; }
-/* Light mode ajustes dropdown idiomas */
-body.light .lang-btn {
-  color: #0d1b2a;
-}
-
-body.light .lang-menu {
-  background: #fff;
-  border: 1px solid #0d1b2a;
-}
-
-body.light .lang-menu li {
-  color: #0d1b2a;
-}
-
-body.light .lang-menu li:hover {
-  background: rgba(13, 27, 42, 0.1);
-}
-
-/* Ajustes menu mobile em light mode */
-body.light .nav-center {
-  background: #fff;          /* fundo branco */
-}
-
-body.light .nav-links li a {
-  color: #0d1b2a;            /* links em preto */
-}
-
-body.light .nav-links li a:hover {
-  color: #e0a93d;            /* hover dourado */
-}
-
-body.light .menu-toggle {
-  color: #0d1b2a;            /* ícone do menu em preto */
-}
-
+body.light .lang-btn { color: #0d1b2a; }
+body.light .lang-menu { background: #fff; border: 1px solid #0d1b2a; }
+body.light .lang-menu li { color: #0d1b2a; }
+body.light .lang-menu li:hover { background: rgba(13, 27, 42, 0.1); }
+body.light .nav-center { background: #fff; }
 body.light .nav-links li a { color: #0d1b2a; }
+body.light .nav-links li a:hover { color: #e0a93d; }
+body.light .menu-toggle { color: #0d1b2a; }
 body.light .nav-links li a::after { background: #0d1b2a; }
 body.light section h2 { color: #0d1b2a; border-bottom: 2px solid #e0a93d; }
 body.light .card { background: #fff; border: 1px solid #0d1b2a; }
 body.light .card h3 { color: #0d1b2a; }
 body.light .card p { color: #333; }
 body.light .card-buttons .ver-projeto,
-body.light .card-buttons .github {
-  border: 1px solid #0d1b2a;
-}
+body.light .card-buttons .github { border: 1px solid #0d1b2a; }
 body.light .skill { background: #fff; border: 1px solid #0d1b2a; }
 body.light #contacto p { color: #333; }
 body.light footer { background: #fff; border-top: 1px solid #0d1b2a; color: #0d1b2a; }
 body.light .modal-content { background: #fff; border: 2px solid #0d1b2a; color: #0d1b2a; }
 body.light .modal-content h2 { color: #0d1b2a; }
 body.light .modal-content p { color: #333; }
-body.light .close { color: #0d1b2a; }
+body.light .close { background: #0d1b2a; color: #fff; }
+body.light .close:hover { background: #e0a93d; color: #0d1b2a; }
 body.light #hero { background: #fff; }
 body.light .hero-text h2 { color: #0d1b2a; }
 body.light .hero-text h2 span { color: #e0a93d; }
 body.light .hero-text p { color: #333; }
 body.light .hero-buttons .btn { background: #0d1b2a; color: #fff; }
 body.light .hero-buttons .btn:hover { background: #e0a93d; color: #0d1b2a; }
-body.light .profile-frame {
-  background: none;
-  padding: 0;
-}
 body.light .exp-card { background: #fff; border: 1px solid #0d1b2a; }
 body.light .exp-card h3 { color: #0d1b2a; }
 body.light .exp-card p { color: #333; }
