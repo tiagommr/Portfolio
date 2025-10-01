@@ -515,6 +515,26 @@ section h2 {
   object-fit: contain;
 }
 
+/* Estilo para vídeo no carrossel */
+#carousel-video {
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  border: none;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  #carousel-video {
+    height: 250px;
+  }
+}
+
+
 .carousel-caption {
   margin-top: 12px;
   font-size: 1rem;

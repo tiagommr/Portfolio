@@ -96,7 +96,7 @@ document.addEventListener("click", () => {
 const projetos = {
   1: {
     title: "MaisTrust",
-    description: "Aplicação móvel desenvolvida para a empresa Trust, focada em otimizar a gestão e interação com clientes.",
+    description: "Aplicação móvel desenvolvida para a empresa Trust, focada em otimizar a gestão e interação com clientes. Este Projeto é composto por 3 repositórios: App Móvel (Flutter), Backend (Spring Boot) e Web (React).",
     images: Array.from({ length: 34 }, (_, i) => `assets/MaisTrust/imagem${i+1}.jpg`)
   },
   2: {
@@ -115,7 +115,19 @@ const projetos = {
     title: "Drive",
     description: "Sistema de partilha de ficheiros distribuído com autenticação, diretórios e sincronização entre clientes.",
     images: ["assets/drive1.jpg", "assets/drive2.jpg"]
+  },
+  5: {
+  title: "Gestão de Publicações Científicas",
+  description: "Aplicação em Java que permite gerir artigos, autores e publicações, explorando relações através de grafos para analisar colaborações e redes de coautorias.",
+  images: ["assets/publicacoes1.jpg", "assets/publicacoes2.jpg"]
+  },
+  6: {
+  title: "Gestão de Palavras (UFP6)",
+  description: "Projeto em C que implementa estruturas de dados dinâmicas para gerir palavras e respetivos códigos UFP6, permitindo inserção, remoção, pesquisa, ordenação e comparação de combinações.",
+  images: ["assets/ufp6_1.jpg", "assets/ufp6_2.jpg"]
   }
+
+
 };
 
 const modal = document.getElementById("modal");
