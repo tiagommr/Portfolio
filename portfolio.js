@@ -109,22 +109,22 @@ const projetos = {
   3: {
     title: "SchoolAir",
     description: "O projeto SchoolAir simula a monitorização da qualidade do ar em salas de aula através de sensores e programação concorrente em C.",
-    images: ["assets/schoolair1.jpg", "assets/schoolair2.jpg"]
+    images: [] // sem imagem
   },
   4: {
     title: "Drive",
     description: "Sistema de partilha de ficheiros distribuído com autenticação, diretórios e sincronização entre clientes.",
-    images: ["assets/drive1.jpg", "assets/drive2.jpg"]
+    images: [] // sem imagem
   },
   5: {
   title: "Gestão de Publicações Científicas",
   description: "Aplicação em Java que permite gerir artigos, autores e publicações, explorando relações através de grafos para analisar colaborações e redes de coautorias.",
-  images: ["assets/publicacoes1.jpg", "assets/publicacoes2.jpg"]
+  images: [] // sem imagem
   },
   6: {
   title: "Gestão de Palavras (UFP6)",
   description: "Projeto em C que implementa estruturas de dados dinâmicas para gerir palavras e respetivos códigos UFP6, permitindo inserção, remoção, pesquisa, ordenação e comparação de combinações.",
-  images: ["assets/ufp6_1.jpg", "assets/ufp6_2.jpg"]
+  images: [] // sem imagem
   }
 
 
@@ -142,6 +142,30 @@ let currentImages = [];
 let currentIndex = 0;
 
 function updateCarousel() {
+  const carousel = document.querySelector(".modal-carousel");
+  const prevBtn = document.querySelector(".carousel-btn.prev");
+  const nextBtn = document.querySelector(".carousel-btn.next");
+
+  //Caso não haja imagens/vídeos
+  if (!currentImages.length) {
+    carousel.style.display = "none";  // esconde todo o carrossel
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
+    carouselImage.style.display = "none";
+
+    const videoEl = document.getElementById("carousel-video");
+    if (videoEl) videoEl.remove();
+
+    carouselDots.innerHTML = "";
+    carouselCaption.textContent = "";
+    return;
+  }
+
+  //Caso haja imagens/vídeos
+  carousel.style.display = "flex";
+  prevBtn.style.display = "block";
+  nextBtn.style.display = "block";
+
   carouselImage.style.opacity = 0;
   carouselImage.style.transform = "translateX(30px)";
 
@@ -150,8 +174,9 @@ function updateCarousel() {
 
     if (currentItem.type === "video") {
       carouselImage.style.display = "none";
-      if (!document.getElementById("carousel-video")) {
-        const video = document.createElement("iframe");
+      let video = document.getElementById("carousel-video");
+      if (!video) {
+        video = document.createElement("iframe");
         video.id = "carousel-video";
         video.width = "100%";
         video.height = "500";
@@ -163,7 +188,7 @@ function updateCarousel() {
         video.allowFullscreen = true;
         document.querySelector(".carousel-image-wrapper").prepend(video);
       } else {
-        document.getElementById("carousel-video").src = currentItem.src;
+        video.src = currentItem.src;
       }
       carouselCaption.textContent = currentItem.caption || "";
     } else {
@@ -178,6 +203,7 @@ function updateCarousel() {
     carouselImage.style.transform = "translateX(0)";
   }, 250);
 
+  //Atualizar dots
   carouselDots.innerHTML = "";
   currentImages.forEach((_, i) => {
     const dot = document.createElement("span");
@@ -189,6 +215,7 @@ function updateCarousel() {
     carouselDots.appendChild(dot);
   });
 }
+
 
 // Abrir modal
 document.querySelectorAll(".ver-projeto").forEach(btn => {
