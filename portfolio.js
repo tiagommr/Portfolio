@@ -97,7 +97,7 @@ const projetos = {
   1: {
     title: "MaisTrust",
     description: "Aplicação móvel desenvolvida para a empresa Trust, focada em otimizar a gestão e interação com clientes. Este Projeto é composto por 3 repositórios: App Móvel (Flutter), Backend (Spring Boot) e Web (React).",
-    images: Array.from({ length: 34 }, (_, i) => `./assets/MaisTrust/imagem${i+1}.jpg`)
+    images: Array.from({ length: 34 }, (_, i) => `assets/MaisTrust/imagem${i+1}.jpg`)
   },
   2: {
     title: "Mundo em Rotas",
