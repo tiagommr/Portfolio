@@ -383,13 +383,20 @@ section h2 {
   padding: 20px;
   border-radius: 10px;
   transition: 0.3s;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(224,169,61,0.4);
 }
 .card h3 { color: #e0a93d; margin-bottom: 10px; }
-.card p { color: #ccc; }
+.card p { 
+  color: #ccc;
+  flex-grow: 1; 
+}
 .card-buttons {
   display: flex;
   gap: 10px;
@@ -418,6 +425,40 @@ section h2 {
 .card-buttons .github:hover {
   background: #e0a93d;
   color: #0d1b2a;
+}
+
+/* Badges de tecnologias */
+.tech-badges {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.tech-badges span {
+  background: rgba(224,169,61,0.15);
+  border: 1px solid #e0a93d;
+  color: #e0a93d;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tech-badges span:hover {
+  background: #e0a93d;
+  color: #0d1b2a;
+  cursor: default;
+}
+
+/* Mostrar badges no hover */
+.card:hover .tech-badges {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ==========================
