@@ -279,6 +279,30 @@ carouselImage.addEventListener("touchend", (e) => {
 });
 
 // ===================
+// ANIMAÇÃO AO SCROLL
+// ===================
+const revealElements = document.querySelectorAll(
+  "section, .exp-card, .card, .skill, .hero-text, .hero-img"
+);
+
+revealElements.forEach(el => el.classList.add("scroll-reveal"));
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); // só anima uma vez
+      }
+    });
+  },
+  { threshold: 0.15 } // dispara quando 15% do elemento está visível
+);
+
+revealElements.forEach(el => observer.observe(el));
+
+
+// ===================
 // THEME TOGGLE
 // ===================
 const themeToggle = document.getElementById("theme-toggle");

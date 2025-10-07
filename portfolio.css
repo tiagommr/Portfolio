@@ -885,6 +885,21 @@ footer {
 }
 
 /* ==========================
+   ANIMAÇÕES AO SCROLL
+========================== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.scroll-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ==========================
    LIGHT MODE
 ========================== */
 body.light { background: #fff; color: #0d1b2a; }
@@ -907,6 +922,7 @@ body.light .card p { color: #333; }
 body.light .card-buttons .ver-projeto,
 body.light .card-buttons .github { border: 1px solid #0d1b2a; }
 body.light .skill { background: #fff; border: 1px solid #0d1b2a; }
+body.light #contacto h2 { color: #0d1b2a; }
 body.light #contacto p { color: #333; }
 body.light footer { background: #fff; border-top: 1px solid #0d1b2a; color: #0d1b2a; }
 body.light .modal-content { background: #fff; border: 2px solid #0d1b2a; color: #0d1b2a; }
