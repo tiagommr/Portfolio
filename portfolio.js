@@ -1,5 +1,5 @@
 // ===================
-// TYPING EFFECT INTRO
+// EFEITO DE ESCRITA PRELOADER
 // ===================
 function typeWriter(el, text, speed = 120) {
   return new Promise((resolve) => {
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // ===================
-// NAVBAR SCROLL EFFECT
+// EFEITO SCROLL NA NAVBAR
 // ===================
 window.addEventListener("scroll", () => {
   const navbar = document.querySelector(".navbar");
@@ -279,7 +279,7 @@ carouselImage.addEventListener("touchend", (e) => {
 });
 
 // ===================
-// ANIMAÇÃO AO SCROLL
+// ANIMAÇÃO DE APARECER AO SCROLL
 // ===================
 const revealElements = document.querySelectorAll(
   "section, .exp-card, .card, .skill, .hero-text, .hero-img"
@@ -303,7 +303,7 @@ revealElements.forEach(el => observer.observe(el));
 
 
 // ===================
-// THEME TOGGLE
+// BOTÃO DE MUDANÇA DE TEMA
 // ===================
 const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
