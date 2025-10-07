@@ -108,7 +108,7 @@ const projetos = {
   },
   3: {
     title: "SchoolAir",
-    description: "O projeto SchoolAir simula a monitorização da qualidade do ar em salas de aula através de sensores e programação concorrente em C.",
+    description: "O projeto SchoolAir simula a monitorização da qualidade do ar em salas de aula através da leitura e processamento de dados de sensores (Temperatura, Humidade, PM2.5, PM10, CO2), armazenados em ficheiros .csv. O sistema utiliza programação concorrente em C (POSIX) para garantir desempenho e sincronização entre múltiplas threads.",
     images: [] // sem imagem
   },
   4: {
