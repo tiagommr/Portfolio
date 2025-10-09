@@ -46,30 +46,37 @@
       </nav>
     </header>
 
-    <!-- Hero -->
     <section id="hero">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h2><span>Tiago Rêga</span></h2>
-          <p>
-            Licenciado em Engenharia Informática e apaixonado por tecnologia,
-            com experiência em programação e desenvolvimento de software.
-            Gosto de transformar ideias em soluções práticas e eficazes, sempre
-            com foco na inovação e no crescimento contínuo.
-          </p>
-          <!-- Botões -->
-          <div class="hero-buttons">
-            <a href="#projetos" class="btn">Ver Projetos</a>
-            <a href="assets/CV - Tiago Rêga.pdf" class="btn cv-btn" target="_blank">Ver CV</a>
-          </div>
-        </div>
-        <div class="hero-img">
-          <div class="profile-frame">
-            <img src="assets/profile.jpg" alt="Foto CV" />
-          </div>
-        </div>
+  <div class="hero-top">
+    <div class="hero-text">
+      <h2><span>Tiago Rêga</span></h2>
+      <p>
+        Licenciado em Engenharia Informática e apaixonado por tecnologia,
+        com experiência em programação e desenvolvimento de software.
+        Gosto de transformar ideias em soluções práticas e eficazes, sempre
+        com foco na inovação e no crescimento contínuo.
+      </p>
+    </div>
+
+    <div class="hero-img">
+      <div class="profile-frame">
+        <img src="assets/profile.jpg" alt="Foto CV" />
       </div>
-    </section>
+    </div>
+  </div>
+
+  <div class="hero-buttons">
+    <a href="#projetos" class="btn">Ver Projetos</a>
+
+    <div class="cv-dropdown">
+      <button class="btn cv-btn" id="cv-toggle">Ver CV ▾</button>
+      <ul class="cv-menu" id="cv-menu">
+        <li><a href="assets/CV - Tiago Rêga Português.pdf" target="_blank">Português 🇵🇹</a></li>
+        <li><a href="assets/CV - Tiago Rêga English.pdf" target="_blank">English 🇬🇧</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
     <!-- Sobre -->
     <section id="sobre">

@@ -229,98 +229,214 @@ body {
 }
 
 /* ==========================
-   HERO
+   HERO — Desktop: texto+foto lado a lado, botões por baixo
 ========================== */
 #hero {
-  padding: 100px 10%;
+  padding: 120px 10%;
   min-height: 90vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.hero-content {
+
+/* Texto + imagem lado a lado */
+.hero-top {
   display: flex;
-  flex-wrap: wrap;
-  gap: 60px;
   align-items: center;
+  justify-content: center;
+  gap: 60px;
   max-width: 1100px;
   width: 100%;
+  margin-bottom: 50px; /* espaço para os botões */
 }
+
+/* Texto */
 .hero-text {
   flex: 1;
-  min-width: 280px;
+  text-align: left;
 }
 .hero-text h2 {
   font-size: 3rem;
-  color: #fff;
-  line-height: 1.2;
-}
-.hero-text h2 span { 
-  color: #e0a93d; 
+  color: #e0a93d;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #e0a93d;
+  display: inline-block;
+  padding-bottom: 4px;
 }
 .hero-text p {
-  margin: 20px 0;
+  margin-top: 15px;
   font-size: 1.1rem;
   color: #ccc;
+  line-height: 1.6;
   max-width: 500px;
 }
-.hero-buttons {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-.hero-buttons .btn {
-  padding: 12px 28px;
-  background: #e0a93d;
-  color: #0d1b2a;
-  font-weight: bold;
-  font-size: 1.05rem;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: all 0.3s;
-  box-shadow: 0 0 12px #e0a93d;
-}
-.hero-buttons .btn:hover {
-  background: #d69c2f;
-  transform: translateY(-3px);
-}
-.cv-btn {
-  background: transparent;
-  border: 2px solid #e0a93d;
-  color: #e0a93d;
-}
-.cv-btn:hover {
-  background: #e0a93d;
-  color: #0d1b2a;
-}
+
+/* Foto */
 .hero-img {
   flex: 1;
-  min-width: 250px;
   display: flex;
   justify-content: center;
 }
-.profile-frame {
-  background: none;
-  padding: 0;
+.profile-frame img {
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(224,169,61,0.3);
+}
+
+/* ==========================
+   BOTÕES (iguais e alinhados)
+========================== */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.hero-buttons .btn,
+.cv-dropdown .cv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 240px;
+  height: 68px;
+  background: #e0a93d;
+  color: #0d1b2a;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border-radius: 40px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 16px rgba(224,169,61,0.6);
+  padding: 0;
+}
+
+.hero-buttons .btn:hover,
+.cv-dropdown .cv-btn:hover {
+  background: #d69c2f;
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(224,169,61,0.8);
+}
+
+/* Dropdown CV */
+.cv-dropdown {
+  position: relative;
   display: inline-block;
 }
-.profile-frame img {
-  width: 260px;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 50%;
+.cv-menu {
+  position: absolute;
+  top: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0d1b2a;
+  border: 1px solid #e0a93d;
+  border-radius: 10px;
+  list-style: none;
+  padding: 8px 0;
+  display: none;
+  min-width: 240px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  z-index: 10;
 }
+.cv-menu li {
+  padding: 10px 15px;
+  text-align: left;
+}
+.cv-menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cv-menu li:hover {
+  background: rgba(224,169,61,0.15);
+}
+.cv-dropdown.active .cv-menu {
+  display: block;
+}
+
+/* ==========================
+   MOBILE — tudo centrado e fluido
+========================== */
 @media (max-width: 900px) {
-  .hero-content { 
-    flex-direction: column; text-align: center; 
+  #hero {
+    padding: 80px 8%;
   }
-  .hero-buttons { 
-    justify-content: center; 
+
+  /* Texto e imagem em coluna */
+  .hero-top {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 25px;
   }
-  .hero-text p { 
-    margin: 20px auto; 
+
+  /* Texto centrado */
+  .hero-text {
+    text-align: center;
+    width: 100%;
+    max-width: 90%;
+  }
+  .hero-text h2 {
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+  }
+  .hero-text p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.6;
+    max-width: 95%;
+    margin: 0 auto;
+  }
+
+  /* Foto */
+  .hero-img {
+    justify-content: center;
+  }
+  .profile-frame img {
+    width: 230px;
+    height: 230px;
+  }
+
+  /* Botões */
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-top: 35px;
+  }
+
+  .hero-buttons .btn,
+  .cv-dropdown .cv-btn {
+    width: 100%;
+    max-width: 400px;
+    height: 60px;
+    font-size: 1.05rem;
+  }
+
+  /* 🔥 Fix: força o dropdown a ocupar 100% da largura do botão */
+  .cv-dropdown {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* 🔥 Fix: menu do CV ocupa a mesma largura e fica centralizado */
+  .cv-menu {
+    width: 100%;
+    min-width: unset;
+    left: 0;
+    transform: none;
   }
 }
 
@@ -987,6 +1103,16 @@ body.light .menu-toggle {
 }
 body.light .nav-links li a::after { 
   background: #0d1b2a; 
+}
+body.light .cv-menu {
+  background: #fff;
+  border: 1px solid #0d1b2a;
+}
+body.light .cv-menu li a {
+  color: #0d1b2a;
+}
+body.light .cv-menu li:hover {
+  background: rgba(13, 27, 42, 0.08);
 }
 body.light section h2 { 
   color: #0d1b2a; border-bottom: 2px solid #e0a93d; 

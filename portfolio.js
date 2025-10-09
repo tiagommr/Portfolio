@@ -279,6 +279,22 @@ carouselImage.addEventListener("touchend", (e) => {
 });
 
 // ===================
+// DROPDOWN DO CV
+// ===================
+const cvToggle = document.getElementById("cv-toggle");
+const cvDropdown = document.querySelector(".cv-dropdown");
+const cvMenu = document.getElementById("cv-menu");
+
+cvToggle.addEventListener("click", (e) => {
+  e.stopPropagation();
+  cvDropdown.classList.toggle("active");
+});
+
+document.addEventListener("click", () => {
+  cvDropdown.classList.remove("active");
+});
+
+// ===================
 // ANIMAÇÃO DE APARECER AO SCROLL
 // ===================
 const revealElements = document.querySelectorAll(
