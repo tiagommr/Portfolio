@@ -51,6 +51,40 @@ window.addEventListener("scroll", () => {
 });
 
 // ===================
+// BOTÃO FLUTUANTE + MENU
+// ===================
+const floatingMenu = document.getElementById("floatingMenu");
+const menuBtn = document.getElementById("menuBtn");
+const menuLinks = document.getElementById("menuLinks");
+let lastScrollTop = 0;
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  // botão aparece após scroll maior que 100px
+  if (currentScroll > 100) {
+    floatingMenu.style.display = "block";
+  } else {
+    // scroll no topo -> esconder botão
+    floatingMenu.style.display = "none";
+    menuLinks.classList.remove("show");
+    const icon = menuBtn.querySelector("i");
+    if (icon.classList.contains("fa-x")) {
+      icon.classList.replace("fa-x", "fa-plus");
+    }
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
+menuBtn.addEventListener("click", () => {
+  menuLinks.classList.toggle("show");
+  const icon = menuBtn.querySelector("i");
+  icon.classList.toggle("fa-plus");
+  icon.classList.toggle("fa-x");
+});
+
+// ===================
 // MENU MOBILE
 // ===================
 const menuToggle = document.getElementById("menu-toggle");
