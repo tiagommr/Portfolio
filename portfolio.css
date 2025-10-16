@@ -31,43 +31,66 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
   z-index: 9999;
+  color: #fff;
   opacity: 1;
   transition: opacity 1s ease;
 }
-#intro h1#typing {
-  font-size: 3rem;
-  letter-spacing: 2px;
-  border-right: 3px solid #e0a93d;
-  padding-right: 6px;
-  white-space: nowrap;
-  display: inline-block;
-  animation: caret-blink 1s step-end infinite;
+
+#signature {
+  width: 400px;
+  height: 100px;
 }
+
+#signature text {
+  font-family: "Poppins", sans-serif;
+  font-size: 3rem;
+  fill: none;
+  stroke: #e0a93d;
+  stroke-width: 2;
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  animation: drawText 7.5s ease forwards;
+}
+
 #intro #subtitle {
   font-size: 1.5rem;
   color: #e0a93d;
   opacity: 0;
+  transform: translateY(20px);
+  text-shadow: 0 0 10px #e0a93d55;
+  animation: fadeSlide 1.2s ease forwards;
+  animation-delay: 1.5s; /* sincroniza com fim do SVG */
 }
-#intro #subtitle.show {
-  animation: fadeInUp 650ms ease forwards;
+
+/* Fade para conteúdo principal */
+#main-content {
+  opacity: 0;
 }
-#main-content { opacity: 0; }
-#main-content.fade-in { animation: contentIn 700ms ease forwards; }
+#main-content.fade-in {
+  animation: contentIn 700ms ease forwards;
+}
 
 /* Animações */
-@keyframes caret-blink {
-  0%, 50%, 100% { border-color: #e0a93d; }
-  25%, 75% { border-color: transparent; }
+@keyframes drawText {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0); }
 }
 @keyframes contentIn {
   from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    text-shadow: 0 0 20px #e0a93d;
+  }
 }
 
 /* ==========================

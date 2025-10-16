@@ -1,33 +1,13 @@
 // ===================
-// EFEITO DE ESCRITA PRELOADER
+// PRELOADER SVG DRAW
 // ===================
-function typeWriter(el, text, speed = 120) {
-  return new Promise((resolve) => {
-    let i = 0;
-    const step = () => {
-      if (i <= text.length) {
-        el.textContent = text.slice(0, i);
-        i++;
-        setTimeout(step, speed);
-      } else {
-        resolve();
-      }
-    };
-    step();
-  });
-}
-
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   const intro = document.getElementById("intro");
-  const typingEl = document.getElementById("typing");
-  const subtitle = document.getElementById("subtitle");
   const main = document.getElementById("main-content");
 
   main.style.display = "none";
 
-  await typeWriter(typingEl, "Tiago Rêga", 120);
-  subtitle.classList.add("show");
-
+  // Espera o tempo da animação do SVG + subtítulo
   setTimeout(() => {
     intro.style.opacity = "0";
     setTimeout(() => {
@@ -35,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       main.style.display = "block";
       main.classList.add("fade-in");
     }, 1000);
-  }, 1200);
+  }, 3300); // tempo total das animações do preloader
 });
 
 // ===================
